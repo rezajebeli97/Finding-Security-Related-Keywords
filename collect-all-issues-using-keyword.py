@@ -6,24 +6,15 @@ import subprocess
 import time
 import re
 
-issueStates = ['open', 'closed']
-
-framework = sys.argv[1]
-
-frameworkOrg = {
-    'tensorflow' : 'tensorflow',
-}
-
-if framework not in frameworkOrg.keys():
-    raise Exception("Please enter a valid framework in the command line")
-
-
-def webscrape(issueState, issueList, keywords):
+def webscrape(issueState, issueList, keywords, status):
     files = []
     print('Number of {} issues to be explored : {}'.format(issueState, len(issueList)))
 
     for keyword in keywords:
-    	files.append(open('issues/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
+    	if status == 'test':
+    		files.append(open('issues/test/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
+    	else:
+    		files.append(open('issues/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
 
     for issue in issueList:
         with open(issue, 'r', encoding='utf-8') as f:
@@ -61,16 +52,44 @@ def writeResults(issueState, issuesInfo, keyword):
         f.close()
 
 
+issueStates = ['open', 'closed']
+
+frameworkOrg = {
+    'tensorflow' : 'tensorflow',
+}
+
+framework = sys.argv[1]
+
+if framework not in frameworkOrg.keys():
+    raise Exception("Please enter a valid framework in the command line")
+
+issueState = sys.argv[2]
+
+status = sys.argv[3]
+
 
 start = time.time()
-openIssues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
-closedIssues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
-# openIssues = ['../Test/{}/open/{}'.format(framework, f) for f in os.listdir('../Test/{}/open'.format(framework))]
-# closedIssues = ['../Test/{}/closed/{}'.format(framework, f) for f in os.listdir('../Test/{}/closed'.format(framework))]
+
+issues = []
+
+if issueState == 'open' and status == 'real':
+	issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
+
+elif issueState == 'closed' and stauts != 'real':
+	issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
+
+elif issueState == 'open' and status == 'test':
+	issues = ['../Test/{}/open/{}'.format(framework, f) for f in os.listdir('../Test/{}/open'.format(framework))]
+
+elif issueState == 'closed' and stauts == 'test':
+	issues = ['../Test/{}/closed/{}'.format(framework, f) for f in os.listdir('../Test/{}/closed'.format(framework))]
+
+else:
+	raise Exception("Please enter valid inputs in the command line")
 
 keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2', 'performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage']
-# openIssuesHavingTheKeywordInfo = webscrape(issueStates[0], openIssues, keywords)
-closedIssuesHavingTheKeywordInfo = webscrape(issueStates[1], closedIssues, keywords)
+
+webscrape(issueState, issues, keywords, status)
 
 timeTaken = time.time() - start
 
