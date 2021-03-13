@@ -75,7 +75,7 @@ issues = []
 if issueState == 'open' and status == 'real':
 	issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
 
-elif issueState == 'closed' and stauts != 'real':
+elif issueState == 'closed' and stauts == 'real':
 	issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
 
 elif issueState == 'open' and status == 'test':
