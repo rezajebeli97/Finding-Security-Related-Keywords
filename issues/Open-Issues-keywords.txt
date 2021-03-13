@@ -1,0 +1,15 @@
+random: 704
+exception: 461
+crash: 318
+hash: 144
+token: 134
+TODO: 102
+security: 38
+secret: 7
+password: 5
+vulnerable: 4
+HMAC: 2
+MD5: 2
+SHA-2: 2
+SHA-1: 1
+CSRF: 0
