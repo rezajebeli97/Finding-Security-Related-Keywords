@@ -23,7 +23,7 @@ def webscrape(issueState, issueList, keywords):
     print('Number of {} issues to be explored : {}'.format(issueState, len(issueList)))
 
     for keyword in keywords:
-    	files.append(open('issues/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, keyword, framework), 'w+', encoding='utf-8'))
+    	files.append(open('issues/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
 
     for issue in issueList:
         with open(issue, 'r', encoding='utf-8') as f:
@@ -63,15 +63,14 @@ def writeResults(issueState, issuesInfo, keyword):
 
 
 start = time.time()
-
 openIssues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
 closedIssues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
 # openIssues = ['../Test/{}/open/{}'.format(framework, f) for f in os.listdir('../Test/{}/open'.format(framework))]
 # closedIssues = ['../Test/{}/closed/{}'.format(framework, f) for f in os.listdir('../Test/{}/closed'.format(framework))]
 
-keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
-openIssuesHavingTheKeywordInfo = webscrape(issueStates[1], closedIssues, keywords)
-# closeInfos = webscrape(issueStates[1], closedIssues, keywords)
+keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2', 'performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage']
+# openIssuesHavingTheKeywordInfo = webscrape(issueStates[0], openIssues, keywords)
+closedIssuesHavingTheKeywordInfo = webscrape(issueStates[1], closedIssues, keywords)
 
 timeTaken = time.time() - start
 
