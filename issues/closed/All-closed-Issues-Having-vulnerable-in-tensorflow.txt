@@ -1,0 +1,9 @@
+ID: 4132	Num of Repeat: 1
+ID: 6460	Num of Repeat: 1
+ID: 42631	Num of Repeat: 1
+ID: 42522	Num of Repeat: 1
+ID: 43332	Num of Repeat: 1
+ID: 37011	Num of Repeat: 1
+ID: 2626	Num of Repeat: 1
+ID: 16603	Num of Repeat: 1
+ID: 43087	Num of Repeat: 1

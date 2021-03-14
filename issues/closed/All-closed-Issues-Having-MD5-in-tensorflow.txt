@@ -1,0 +1,10 @@
+ID: 32037	Num of Repeat: 1
+ID: 2035	Num of Repeat: 1
+ID: 43515	Num of Repeat: 1
+ID: 41932	Num of Repeat: 2
+ID: 41821	Num of Repeat: 3
+ID: 36072	Num of Repeat: 1
+ID: 28735	Num of Repeat: 3
+ID: 3006	Num of Repeat: 1
+ID: 3694	Num of Repeat: 3
+ID: 37431	Num of Repeat: 2

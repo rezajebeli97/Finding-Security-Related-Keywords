@@ -1,0 +1,4 @@
+ID: 39061	Num of Repeat: 1
+ID: 6763	Num of Repeat: 1
+ID: 42832	Num of Repeat: 1
+ID: 5633	Num of Repeat: 1
