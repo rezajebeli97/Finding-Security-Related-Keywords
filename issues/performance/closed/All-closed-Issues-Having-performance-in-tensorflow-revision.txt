@@ -1,0 +1,21 @@
+ID: 5847	Num of Repeat: 2	performance (?)
+ID: 26171	Num of Repeat: 1	not performance(template)
+ID: 32098	Num of Repeat: 1	not performance(template)
+ID: 43972	Num of Repeat: 1	not performance
+ID: 37330	Num of Repeat: 1	performance
+ID: 28495	Num of Repeat: 1	not performance
+ID: 33373	Num of Repeat: 1	not performance(template)
+ID: 33723	Num of Repeat: 4	performace(labeled)
+ID: 8326	Num of Repeat: 2	performace(infinite loop)
+ID: 43421	Num of Repeat: 1	not performance(template)
+ID: 41109	Num of Repeat: 2	not performance
+ID: 26937	Num of Repeat: 1	not performance(template)
+ID: 38929	Num of Repeat: 1	not performance(template)
+ID: 36464	Num of Repeat: 1	not performance(template)
+ID: 34459	Num of Repeat: 1	not performance(template)
+ID: 28929	Num of Repeat: 1	not performance(template)
+ID: 5902	Num of Repeat: 6	performace
+ID: 26464	Num of Repeat: 1	not performance(template)
+ID: 32077	Num of Repeat: 1	not performance(template)
+ID: 29791	Num of Repeat: 2	not performance
+accuracy = 5/20
