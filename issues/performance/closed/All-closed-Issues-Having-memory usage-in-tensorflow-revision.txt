@@ -1,8 +1,8 @@
-ID: 23236	Num of Repeat: 1
-ID: 20699	Num of Repeat: 2
-ID: 2117	Num of Repeat: 1
-ID: 13546	Num of Repeat: 1
-ID: 14283	Num of Repeat: 1
+ID: 23236	Num of Repeat: 1	performance
+ID: 20699	Num of Repeat: 2	performance
+ID: 2117	Num of Repeat: 1	not performance(?)
+ID: 13546	Num of Repeat: 1	performance
+ID: 14283	Num of Repeat: 1	
 ID: 17155	Num of Repeat: 5
 ID: 10151	Num of Repeat: 1
 ID: 29816	Num of Repeat: 1
