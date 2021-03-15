@@ -6,15 +6,15 @@ import subprocess
 import time
 import re
 
-def webscrape(issueState, issueList, keywords, status):
+def webscrape(issueState, issueList, keywords, status, topic):
     files = []
     print('Number of {} issues to be explored : {}'.format(issueState, len(issueList)))
 
     for keyword in keywords:
     	if status == 'test':
-    		files.append(open('issues/test/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
+    		files.append(open('issues/test/{}/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(topic, issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
     	else:
-    		files.append(open('issues/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
+    		files.append(open('issues/{}/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(topic, issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
 
     for issue in issueList:
         with open(issue, 'r', encoding='utf-8') as f:
@@ -67,10 +67,14 @@ issueState = sys.argv[2]
 
 status = sys.argv[3]
 
+topic = sys.argv[4]
 
 start = time.time()
 
 issues = []
+
+keywords = []
+
 
 if issueState == 'open' and status == 'real':
 	issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
@@ -87,9 +91,20 @@ elif issueState == 'closed' and stauts == 'test':
 else:
 	raise Exception("Please enter valid inputs in the command line")
 
-keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2', 'performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage']
-
-webscrape(issueState, issues, keywords, status)
+if topic == "security":
+	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
+	webscrape(issueState, issues, keywords, status, topic)
+elif topic == "performance":
+	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage']
+	webscrape(issueState, issues, keywords, status, topic)
+elif topic == "both":
+	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
+	webscrape(issueState, issues, keywords, status, 'security')
+	topic = 'performance'
+	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage']
+	webscrape(issueState, issues, keywords, status, 'performance')
+else:
+	raise Exception("Wrong topic")
 
 timeTaken = time.time() - start
 
