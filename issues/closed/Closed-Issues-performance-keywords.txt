@@ -1,0 +1,7 @@
+performance: 4964
+fast: 2400
+slow: 1456
+speed: 1052
+efficient: 608
+memory usage:285
+efficiency: 128
