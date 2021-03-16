@@ -1,0 +1,6 @@
+ID: 8776	Num of Repeat: 1	not performance
+ID: 22427	Num of Repeat: 1	performance
+ID: 17339	Num of Repeat: 1	performance
+ID: 6787	Num of Repeat: 1	not perfromance
+ID: 11081	Num of Repeat: 1	not performance
+2/5

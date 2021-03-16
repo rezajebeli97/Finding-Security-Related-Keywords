@@ -1,0 +1,10 @@
+ID: 16197	Num of Repeat: 1	performance
+ID: 15345	Num of Repeat: 1	not performance
+ID: 6816	Num of Repeat: 1	not performance
+ID: 14915	Num of Repeat: 1	performance
+ID: 834	Num of Repeat: 1		not performance
+ID: 22276	Num of Repeat: 4	performance
+ID: 15040	Num of Repeat: 1	not performance
+ID: 39197	Num of Repeat: 1	performance
+ID: 10645	Num of Repeat: 1	not performance
+ID: 44059	Num of Repeat: 1	not performance

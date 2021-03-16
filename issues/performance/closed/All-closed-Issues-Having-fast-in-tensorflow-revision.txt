@@ -1,0 +1,6 @@
+ID: 43972	Num of Repeat: 5	not
+ID: 1107	Num of Repeat: 1	not
+ID: 8326	Num of Repeat: 4	not
+ID: 15241	Num of Repeat: 4	not
+ID: 43421	Num of Repeat: 1	not
+0/5
