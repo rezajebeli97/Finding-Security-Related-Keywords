@@ -95,13 +95,13 @@ if topic == "security":
 	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
 	webscrape(issueState, issues, keywords, status, topic)
 elif topic == "performance":
-	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'GPU']
+	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
 	webscrape(issueState, issues, keywords, status, topic)
 elif topic == "both":
 	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
 	webscrape(issueState, issues, keywords, status, 'security')
 	topic = 'performance'
-	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'GPU']
+	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
 	webscrape(issueState, issues, keywords, status, 'performance')
 else:
 	raise Exception("Wrong topic")
