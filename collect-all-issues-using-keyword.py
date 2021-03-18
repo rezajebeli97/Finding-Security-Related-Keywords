@@ -91,18 +91,16 @@ elif issueState == 'closed' and stauts == 'test':
 else:
 	raise Exception("Please enter valid inputs in the command line")
 
+security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
+performance_keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
 if topic == "security":
-	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
-	webscrape(issueState, issues, keywords, status, topic)
+	webscrape(issueState, issues, security_keywords, status, topic)
 elif topic == "performance":
-	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
-	webscrape(issueState, issues, keywords, status, topic)
+	webscrape(issueState, issues, performance_keywords, status, topic)
 elif topic == "both":
-	keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'random', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
-	webscrape(issueState, issues, keywords, status, 'security')
+	webscrape(issueState, issues, security_keywords, status, 'security')
 	topic = 'performance'
-	keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
-	webscrape(issueState, issues, keywords, status, 'performance')
+	webscrape(issueState, issues, performance_keywords, status, 'performance')
 else:
 	raise Exception("Wrong topic")
 
