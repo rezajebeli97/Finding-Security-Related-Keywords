@@ -1,0 +1,10 @@
+ID: 26171	Num of Repeat: 1	not
+ID: 23689	Num of Repeat: 8	not
+ID: 38991	Num of Repeat: 15	not
+ID: 17092	Num of Repeat: 2	could be
+ID: 37977	Num of Repeat: 4	not
+ID: 6	Num of Repeat: 13		not
+ID: 16135	Num of Repeat: 1	not
+ID: 45279	Num of Repeat: 2	not
+ID: 40145	Num of Repeat: 8	not
+ID: 14962	Num of Repeat: 2	not

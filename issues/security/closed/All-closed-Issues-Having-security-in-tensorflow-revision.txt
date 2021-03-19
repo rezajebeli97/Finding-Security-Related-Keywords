@@ -1,0 +1,5 @@
+ID: 12874	Num of Repeat: 4	not
+ID: 38494	Num of Repeat: 2	not (not sure)
+ID: 24608	Num of Repeat: 12	not
+ID: 32383	Num of Repeat: 1	not
+ID: 3929	Num of Repeat: 1	not

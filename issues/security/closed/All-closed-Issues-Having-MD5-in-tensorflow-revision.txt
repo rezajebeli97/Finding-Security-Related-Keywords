@@ -1,0 +1,5 @@
+ID: 2035	Num of Repeat: 1	not
+ID: 41932	Num of Repeat: 2	not
+ID: 36072	Num of Repeat: 1	not
+ID: 3006	Num of Repeat: 1	not
+ID: 37431	Num of Repeat: 2	not (hacking?)

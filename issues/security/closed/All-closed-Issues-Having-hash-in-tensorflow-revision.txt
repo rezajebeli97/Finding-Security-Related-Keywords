@@ -1,0 +1,5 @@
+ID: 5847	Num of Repeat: 1	not
+ID: 22620	Num of Repeat: 6	not
+ID: 36134	Num of Repeat: 1	not
+ID: 5465	Num of Repeat: 4	not
+ID: 32625	Num of Repeat: 11	not

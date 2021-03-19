@@ -1,0 +1,3 @@
+ID: 22759	Num of Repeat: 1	not
+ID: 9838	Num of Repeat: 1	not
+ID: 23941	Num of Repeat: 1	secuity
