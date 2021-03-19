@@ -91,7 +91,7 @@ elif issueState == 'closed' and stauts == 'test':
 else:
 	raise Exception("Please enter valid inputs in the command line")
 
-security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'CSRF', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']
+security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']#attacker, 
 performance_keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
 if topic == "security":
 	webscrape(issueState, issues, security_keywords, status, topic)
