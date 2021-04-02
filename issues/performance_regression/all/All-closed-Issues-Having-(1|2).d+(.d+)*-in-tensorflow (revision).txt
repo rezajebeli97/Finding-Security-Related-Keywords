@@ -1,0 +1,15 @@
+ID: 35835	Num of Repeat: 3	N
+ID: 47706	Num of Repeat: 3	N
+ID: 40847	Num of Repeat: 11	Y
+ID: 34936	Num of Repeat: 1	N
+ID: 39535	Num of Repeat: 3	N
+ID: 34144	Num of Repeat: 1	N
+ID: 32009	Num of Repeat: 2	N
+ID: 47335	Num of Repeat: 6	N
+ID: 43585	Num of Repeat: 2	N
+ID: 40042	Num of Repeat: 5	N
+ID: 35415	Num of Repeat: 4	Y
+ID: 41718	Num of Repeat: 3	N
+ID: 33656	Num of Repeat: 25	N
+ID: 44162	Num of Repeat: 2	N
+ID: 39556	Num of Repeat: 10	N

@@ -1,0 +1,12 @@
+ID: 37361	Num of Repeat: 2	Y
+ID: 41122	Num of Repeat: 3	N
+ID: 42941	Num of Repeat: 1	N
+ID: 38213	Num of Repeat: 1	N
+ID: 44917	Num of Repeat: 1	Y
+ID: 42572	Num of Repeat: 1	Y
+ID: 38324	Num of Repeat: 1	N
+ID: 6541	Num of Repeat: 1	N
+ID: 37876	Num of Repeat: 1	N
+ID: 43121	Num of Repeat: 1	N
+
+3/10

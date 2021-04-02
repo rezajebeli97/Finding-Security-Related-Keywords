@@ -1,0 +1,12 @@
+ID: 40847	Num of Repeat: 1	Y
+ID: 44157	Num of Repeat: 1	N
+ID: 44176	Num of Repeat: 4	N
+ID: 35124	Num of Repeat: 1	Y
+ID: 40615	Num of Repeat: 3	N
+ID: 40521	Num of Repeat: 1	Y
+ID: 40942	Num of Repeat: 3	Y
+ID: 38352	Num of Repeat: 1	N
+ID: 45114	Num of Repeat: 1	TBD
+ID: 39654	Num of Repeat: 1	N
+
+4/9

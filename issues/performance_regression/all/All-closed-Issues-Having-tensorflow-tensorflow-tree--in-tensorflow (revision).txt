@@ -1,0 +1,6 @@
+ID: 41513	Num of Repeat: 1	Y
+ID: 42584	Num of Repeat: 1	N
+ID: 34677	Num of Repeat: 1	N
+ID: 31826	Num of Repeat: 2	N
+
+1/4
