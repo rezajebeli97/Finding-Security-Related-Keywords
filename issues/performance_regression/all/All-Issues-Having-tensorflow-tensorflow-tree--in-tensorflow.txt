@@ -1,0 +1,8 @@
+ID: 35556	Num of Repeat: 1
+ID: 43061	Num of Repeat: 1
+ID: 41513	Num of Repeat: 1
+ID: 42584	Num of Repeat: 1
+ID: 34677	Num of Repeat: 1
+ID: 39396	Num of Repeat: 1
+ID: 31826	Num of Repeat: 2
+ID: 45100	Num of Repeat: 2
