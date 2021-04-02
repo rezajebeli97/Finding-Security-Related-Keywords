@@ -1,11 +1,6 @@
 ID: 44917	Num of Repeat: 1
 ID: 42572	Num of Repeat: 1
-ID: 42277	Num of Repeat: 3
-ID: 40708	Num of Repeat: 3
 ID: 38324	Num of Repeat: 1
-ID: 37729	Num of Repeat: 2
-ID: 43583	Num of Repeat: 2
 ID: 6541	Num of Repeat: 1
 ID: 37876	Num of Repeat: 1
-ID: 36919	Num of Repeat: 3
 ID: 43121	Num of Repeat: 1
