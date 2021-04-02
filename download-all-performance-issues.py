@@ -45,7 +45,8 @@ def webscrape(issueState):
     print('Number of {} issues to be explored : {}'.format(issueState, n))
 
     #getting all the issues in the page
-    resultSet = soup.find_all('a', {'class' : "link-gray-dark v-align-middle no-underline h4 js-navigation-open"})
+    resultSet = soup.find_all('a', {'class' : "Link--primary v-align-middle no-underline h4 js-navigation-open markdown-title"})
+    print(resultSet)
     issueCount = 0
     pageCount = 1
     #we encapsulate the code with a while True and try statement so if the connection is lost, we don't lose our progress
@@ -143,7 +144,7 @@ def webscrape(issueState):
                                 return
 
                         #getting all the issues in the page
-                        resultSet = soup.find_all('a', {'class' : "link-gray-dark v-align-middle no-underline h4 js-navigation-open"})
+                        resultSet = soup.find_all('a', {'class' : "Link--primary v-align-middle no-underline h4 js-navigation-open markdown-title"})
                         if resultSet == None or len(resultSet) == 0:
                             print('descrepency (resultset). Retrying...')
                             continue
