@@ -95,7 +95,7 @@ else:
 
 security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']#attacker, 
 # performance_keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
-performance_regression_keywords = ['commit', '(1|2)\\.\\d+(\\.\\d+)*', 'tensorflow\\/tensorflow\\/commit\\/\\w+ ', 'tensorflow\\/tensorflow\\/tree\\/', 'tensorflow\\/tensorflow\\/releases\\/', 'release']
+performance_regression_keywords = ['commit', '(1|2)\\.\\d+(\\.\\d+)*', 'tensorflow\\/tensorflow\\/commit\\/\\w+', 'tensorflow\\/tensorflow\\/tree\\/', 'tensorflow\\/tensorflow\\/releases\\/', 'release']
 if topic == "security":
 	webscrape(issueState, issues, security_keywords, status, topic)
 elif topic == "performance_regression":
