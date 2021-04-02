@@ -3,16 +3,19 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import time
+from selenium.webdriver.support.ui import WebDriverWait as wait
+from selenium import webdriver
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.common.by import By
 
 issueStates = ['open', 'closed']
 
 frameworkOrg = {
-    'pytorch' : 'pytorch',
+    'tfjs' : 'tensorflow',
     'tensorflow' : 'tensorflow',
-    'keras-team' : 'keras',
-    'Theano' : 'Theano'
 }
 
+label_type = 'performance'
 
 framework = sys.argv[1]
 
@@ -27,7 +30,6 @@ for issueState in issueStates:
     if not os.path.exists('{}/{}'.format(framework, issueState)):
         os.makedirs('{}/{}'.format(framework, issueState))
 
-label_type = 'performance'
 # pages = []
 
 def webscrape(issueState):
@@ -55,9 +57,6 @@ def webscrape(issueState):
             while issueCount < n:
                 
                 print('\nPage {}:\n'.format(pageCount))
-                # pages.append(pageCount)
-                
-                # n_issues_in_page = len(resultSet)
 
                 for res in resultSet:
 
@@ -76,6 +75,18 @@ def webscrape(issueState):
                             issueUrl = 'https://github.com' + res['href']
                             issuePage = requests.get(issueUrl)
                             issueSoup = BeautifulSoup(issuePage.text, 'html5lib')
+
+                            #in case the issue has a "Load more" section, we use selenium to open it up to make sure to scrape the complete issue page
+                            loadMoreButton = issueSoup.find('button', {'class' : 'text-gray pt-2 pb-0 px-4 bg-white border-0'})
+                            if loadMoreButton != None:
+                                driver = webdriver.Chrome('./selenium-webdrivers/chromedriver')
+                                driver.get(issueUrl)
+                                while loadMoreButton != None:
+                                    loadMoreButtonSelen = wait(driver, 20).until(expected_conditions.presence_of_element_located((By.CSS_SELECTOR, 'button.bg-white.border-0')))
+                                    loadMoreButtonSelen.click()
+                                    wait(driver, 5).until(expected_conditions.invisibility_of_element_located(loadMoreButtonSelen))
+                                    issueSoup = BeautifulSoup(driver.page_source, 'html5lib')
+                                    loadMoreButton = issueSoup.find('button', {'class' : 'text-gray pt-2 pb-0 px-4 bg-white border-0'})
 
                             #getting the first post which will correspond to the issue's description
                             issueDesc = issueSoup.find('td', class_="d-block comment-body markdown-body js-comment-body")
