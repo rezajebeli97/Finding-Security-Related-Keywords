@@ -6,7 +6,7 @@ import subprocess
 import time
 import re
 
-def webscrape(issueState, issueList, keywords, status, topic):
+def webscrape_conncected(issueState, issueList, keywords, status, topic):
     files = []
     print('Number of {} issues to be explored : {}'.format(issueState, len(issueList)))
 
@@ -30,8 +30,11 @@ def webscrape(issueState, issueList, keywords, status, topic):
 
             for i, keyword in enumerate(keywords):
                 #check if the html has the keyword
-                issueDesc = soup.find('td', class_="d-block comment-body markdown-body js-comment-body")
-                stringsContainingTheKeyword = issueDesc.findAll(text=re.compile(keyword))
+                issueTitle = soup.find('span', class_="js-issue-title markdown-title")
+                issueDescs = soup.findAll('td', class_="d-block comment-body markdown-body js-comment-body")
+                issueDesc = '\n'.join(issueDescs)
+                issue_title_desc = issueTitle + '\n' + issueDesc
+                stringsContainingTheKeyword = issue_title_desc.findAll(text=re.compile(keyword, re.I))
                 NumOfRepeat = len(stringsContainingTheKeyword)
                 if (NumOfRepeat > 0):
                     issueInfo = {
@@ -40,6 +43,55 @@ def webscrape(issueState, issueList, keywords, status, topic):
                     'Num of Repeat': NumOfRepeat
                     }
                     files[i].write('ID: {}\tNum of Repeat: {}\n'.format(issueInfo['ID'], issueInfo['Num of Repeat']))
+
+
+def webscrape_separated(issueState, issueList, keywords_set, status, topic):
+    files = []
+    print('Number of {} issues to be explored : {}'.format(issueState, len(issueList)))
+
+    for keyword_set in keywords_set:
+        keyword = '-'.join(keyword_set)
+        if status == 'test':
+            files.append(open('issues/test/{}/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(topic, issueState, issueState, keyword, framework), 'w+', encoding='utf-8'))
+        else:
+            files.append(open('issues/{}/{}/All-{}-Issues-Having-{}-in-{}.txt'.format(topic, issueState, issueState, keyword.replace('\\','').replace('/','-'), framework), 'w+', encoding='utf-8'))
+
+    for issue in issueList:
+        with open(issue, 'r', encoding='utf-8') as f:
+            #parsing the html file corresponding to the issue
+            soup = BeautifulSoup(f.read(), 'html5lib')
+
+            #getting the first post which will correspond to the issue's description
+            # issueDesc = soup.find('td', class_="d-block comment-body markdown-body js-comment-body")
+
+            #extracting the issue's ID from the bug report
+            issueIdMatch = re.search('\\d+', issue)
+            issueId = issue[issueIdMatch.start() : issueIdMatch.end()]
+
+            for i, keyword_set in enumerate(keywords_set):
+                #check if the html has the keyword
+                NumOfRepeats = ''
+                issueTitle = soup.find('span', class_="js-issue-title markdown-title")
+                issueDescs = soup.findAll('td', class_="d-block comment-body markdown-body js-comment-body")
+                issueDesc = '\n'.join(issueDescs)
+                issue_title_desc = issueTitle + '\n' + issueDesc
+                for keyword_index, keyword in enumerate(keyword_set):
+                    stringsContainingTheKeyword = issue_title_desc.findAll(text=re.compile(keyword, re.I))
+                    NumOfRepeat = len(stringsContainingTheKeyword)
+                    if (NumOfRepeat == 0):
+                        break
+                    
+                    if keyword_index == len(keyword_set) - 1:
+                        NumOfRepeats += str(NumOfRepeat)
+                        issueInfo = {
+                            'ID' : issueId,
+                            # 'Description' : issueDesc,
+                            'Num of Repeats': NumOfRepeats
+                        }
+                        files[i].write('ID: {}\tNum of Repeats: {}\n'.format(issueInfo['ID'], issueInfo['Num of Repeats']))
+
+                    else:
+                        NumOfRepeats += str(NumOfRepeat) + ','
 
 
 def writeResults(issueState, issuesInfo, keyword):
@@ -78,12 +130,12 @@ keywords = []
 
 
 if issueState == 'open' and status == 'real':
-    # issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
-    issues = ['{}/open/{}'.format(framework, f) for f in os.listdir('{}/open'.format(framework))]
+    issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/open'.format(framework))]
+    # issues = ['{}/open/{}'.format(framework, f) for f in os.listdir('{}/open'.format(framework))]
 
 elif issueState == 'closed' and status == 'real':
-    # issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
-    issues = ['{}/closed/{}'.format(framework, f) for f in os.listdir('{}/closed'.format(framework))]
+    issues = ['../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed/{}'.format(framework, f) for f in os.listdir('../polygot_in_dl_frameworks/polygot_in_dl_frameworks/{}/closed'.format(framework))]
+    # issues = ['{}/closed/{}'.format(framework, f) for f in os.listdir('{}/closed'.format(framework))]
 
 elif issueState == 'open' and status == 'test':
     issues = ['../Test/{}/open/{}'.format(framework, f) for f in os.listdir('../Test/{}/open'.format(framework))]
@@ -94,18 +146,18 @@ elif issueState == 'closed' and stauts == 'test':
 else:
     raise Exception("Please enter valid inputs in the command line")
 
-security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']#attacker, 
+# security_keywords = ['exception', 'crash', 'security', 'token', 'secret', 'TODO', 'password', 'vulnerable', 'hash', 'HMAC', 'MD5', 'SHA-1', 'SHA-2']#attacker, 
 # performance_keywords = ['performance', 'efficiency', 'efficient', 'fast', 'speed', 'slow', 'memory usage', 'improve', 'memory leak', 'optimize']
-performance_regression_keywords = ['commit', '(1|2)\\.\\d+(\\.\\d+)*', 'tensorflow\\/tensorflow\\/commit\\/\\w+', 'tensorflow\\/tensorflow\\/tree\\/', 'tensorflow\\/tensorflow\\/releases\\/', 'release']
+# performance_accuracy_regression = [['accuracy', 'decreas(e|ed)'], ['accuracy', 'degrad(e|ed)'], ['worse', 'accuracy'], ['accuracy', 'dro(p|pped|pping)']]
+performance_regression_keywrods = ['accuracy decreas(e|ed)', 'accuracy degrad(e|ed)', 'worse in accuracy', 'accuracy dro(p|pped|pping)', 'memory increas(ed|e|ing)', 'memory usage increase(ed|e|ing)', 'computation time increase(ed|e|ing)', 'got slow', 'performance regression']
 
-if topic == "security":
-    webscrape(issueState, issues, security_keywords, status, topic)
-elif topic == "performance_regression":
-    webscrape(issueState, issues, performance_regression_keywords, status, topic)
+if topic == "performance_accuracy_regression":
+    webscrape_separated(issueState, issues, performance_accuracy_regression, status, topic)
+elif topic == "prediction":
+    webscrape_separated(issueState, issues, None, status, topic)
 elif topic == "both":
-    webscrape(issueState, issues, security_keywords, status, 'security')
-    topic = 'performance_regression'
-    webscrape(issueState, issues, performance_regression, status, 'performance_regression')
+    webscrape_separated(issueState, issues, performance_accuracy_regression, status, 'performance_accuracy_regression')
+    webscrape_separated(issueState, issues, None, status, 'prediction')
 else:
     raise Exception("Wrong topic")
 

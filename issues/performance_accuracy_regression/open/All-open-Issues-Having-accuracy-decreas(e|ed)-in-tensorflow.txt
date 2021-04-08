@@ -1,0 +1,15 @@
+ID: 43476	Num of Repeats: 1,1
+ID: 42251	Num of Repeats: 1,1
+ID: 42694	Num of Repeats: 1,1
+ID: 42636	Num of Repeats: 1,1
+ID: 44435	Num of Repeats: 1,1
+ID: 34257	Num of Repeats: 1,1
+ID: 44856	Num of Repeats: 1,1
+ID: 37733	Num of Repeats: 1,1
+ID: 34827	Num of Repeats: 1,1
+ID: 30063	Num of Repeats: 3,1
+ID: 43849	Num of Repeats: 1,1
+ID: 37401	Num of Repeats: 1,1
+ID: 13437	Num of Repeats: 1,1
+ID: 46620	Num of Repeats: 1,1
+ID: 44918	Num of Repeats: 1,1
